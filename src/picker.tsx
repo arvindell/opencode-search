@@ -1,5 +1,5 @@
 /** @jsxImportSource @opentui/solid */
-import { usePlugin } from "@opencode/plugin/tui";
+import type { Context } from "@opencode/plugin/tui/context";
 import { InputRenderable, RGBA, TextAttributes } from "@opentui/core";
 import { useKeyboard, useTerminalDimensions } from "@opentui/solid";
 import type { DetailLine, SessionDetails } from "./message-text";
@@ -36,7 +36,7 @@ function ellipsize(text: string, width: number) {
 function highlighted(
   text: string,
   query: string,
-  color: ReturnType<typeof usePlugin>["theme"]["text"]["base"],
+  color: Context["theme"]["text"]["base"],
 ) {
   const words = query
     .toLowerCase()
@@ -61,6 +61,7 @@ function highlighted(
 }
 
 function SessionPicker(props: {
+  context: Context;
   initial: string;
   all: Item[];
   projectID: string;
@@ -74,7 +75,7 @@ function SessionPicker(props: {
   delete: (item: Item) => Promise<string[]>;
   onChoose: (value: string) => void;
 }) {
-  const context = usePlugin();
+  const context = props.context;
   const theme = context.theme;
   const [pins, updatePins] = context.storage.store("search-sessions.pins", {
     initial: { ids: [] as string[] },
@@ -590,7 +591,7 @@ function SessionPicker(props: {
 }
 
 export function selectSession(
-  context: ReturnType<typeof usePlugin>,
+  context: Context,
   initial: string,
   all: Item[],
   projectID: string,
@@ -608,6 +609,7 @@ export function selectSession(
     context.ui.dialog.show(
       () => (
         <SessionPicker
+          context={context}
           initial={initial}
           all={all}
           projectID={projectID}
