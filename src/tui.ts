@@ -62,7 +62,7 @@ function runWorker(request: object, signal: AbortSignal): Promise<WorkerReply> {
   return new Promise((resolve, reject) => {
     if (signal.aborted)
       return reject(new DOMException("Search cancelled", "AbortError"));
-    const worker = new Worker(new URL("./query-worker.ts", import.meta.url));
+    const worker = new Worker(new URL("./query-worker.js", import.meta.url));
     let finished = false;
     const done = (result: WorkerReply | Error) => {
       if (finished) return;

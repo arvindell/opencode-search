@@ -6,14 +6,15 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    "./tui": "./src/tui.ts"
+    "./tui": "./dist/tui.js"
   },
   "files": [
-    "src",
+    "dist",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
+    "build": "bun scripts/build.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
   },
