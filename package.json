@@ -14,7 +14,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "bun scripts/build.ts",
+    "compile": "bun scripts/build.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
   },
