@@ -19,7 +19,7 @@ A fast, local session-search plugin for [OpenCode](https://opencode.ai). Search 
 Install the versioned Git package with OpenCode:
 
 ```sh
-opencode plugin add github:arvindell/opencode-search#v1.0.2
+opencode plugin add github:arvindell/opencode-search#v1.0.3
 ```
 
 Restart OpenCode. The installer adds the TUI plugin to your global `cli.json`.
@@ -66,6 +66,7 @@ This plugin is written in TypeScript and uses Bun for local checks:
 ```sh
 bun test
 bun run typecheck
+bun run compile
 ```
 
 ## License

@@ -1,6 +1,6 @@
 {
   "name": "opencode-search",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Search your OpenCode sessions with full text & fuzzy search; with message and file matching",
   "license": "MIT",
