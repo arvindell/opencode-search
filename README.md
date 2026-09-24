@@ -2,7 +2,7 @@
 
 A fast, local session-search plugin for [OpenCode](https://opencode.ai). Search past conversations by title, message text, tool output, and file references without leaving the terminal.
 
-`opencode-search` keeps the search experience close to the work: start from the project you are in, broaden to every project when needed, inspect matching conversation context, then open the session you want to continue.
+![Search your OpenCode sessions](assets/demo.gif)
 
 ## Features
 
@@ -19,7 +19,7 @@ A fast, local session-search plugin for [OpenCode](https://opencode.ai). Search 
 Install the versioned Git package with OpenCode:
 
 ```sh
-opencode plugin add github:arvindell/opencode-search#v1.0.1
+opencode plugin add github:arvindell/opencode-search#v1.0.2
 ```
 
 Restart OpenCode. The installer adds the TUI plugin to your global `cli.json`.
@@ -70,4 +70,4 @@ bun run typecheck
 
 ## License
 
-All rights reserved.
+MIT — see [LICENSE](LICENSE).
