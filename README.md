@@ -16,17 +16,13 @@ A fast, local session-search plugin for [OpenCode](https://opencode.ai). Search 
 
 ## Install
 
-Clone this repository, then link its `src` directory into OpenCode's global plugins folder:
+Install the versioned Git package with OpenCode:
 
 ```sh
-git clone https://github.com/arvindell/opencode-search.git
-cd opencode-search
-
-mkdir -p ~/.config/opencode/plugins
-ln -s "$(pwd)/src" ~/.config/opencode/plugins/opencode-search
+opencode plugin add github:arvindell/opencode-search#v1.0.1
 ```
 
-Restart OpenCode after creating the link.
+Restart OpenCode. The installer adds the TUI plugin to your global `cli.json`.
 
 > The plugin searches locally stored OpenCode sessions. It does not send transcript content to an external search service.
 
@@ -74,4 +70,4 @@ bun run typecheck
 
 ## License
 
-Private project. All rights reserved.
+All rights reserved.

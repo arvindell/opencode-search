@@ -13,6 +13,7 @@ import {
   createSignal,
   For,
   onCleanup,
+  onMount,
 } from "solid-js";
 
 export type Item = {
@@ -90,8 +91,10 @@ function SessionPicker(props: {
   });
   const resize = (width: number, height: number) =>
     setDimensions({ width, height });
-  context.renderer.on("resize", resize);
-  onCleanup(() => context.renderer.off("resize", resize));
+  onMount(() => {
+    context.renderer.on("resize", resize);
+    onCleanup(() => context.renderer.off("resize", resize));
+  });
   const leftWidth = () =>
     Math.min(
       55,
@@ -355,8 +358,10 @@ function SessionPicker(props: {
       void rename();
     }
   };
-  context.renderer.keyInput.on("keypress", keypress);
-  onCleanup(() => context.renderer.keyInput.off("keypress", keypress));
+  onMount(() => {
+    context.renderer.keyInput.on("keypress", keypress);
+    onCleanup(() => context.renderer.keyInput.off("keypress", keypress));
+  });
 
   context.keymap.layer(() => ({
     mode: "global",
