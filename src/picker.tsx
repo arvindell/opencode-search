@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { usePlugin } from "@opencode/plugin/tui";
 import { InputRenderable, RGBA, TextAttributes } from "@opentui/core";
 import { useKeyboard, useTerminalDimensions } from "@opentui/solid";
