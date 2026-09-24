@@ -1,11 +1,10 @@
 {
   "name": "opencode-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Search your OpenCode sessions with full text & fuzzy search; with message and file matching",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
     "./tui": "./src/tui.ts"
   },
   "files": [
