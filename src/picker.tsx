@@ -1,7 +1,11 @@
 /** @jsxImportSource @opentui/solid */
 import type { Context } from "@opencode/plugin/tui/context";
-import { InputRenderable, RGBA, TextAttributes } from "@opentui/core";
-import { useKeyboard, useTerminalDimensions } from "@opentui/solid";
+import {
+  InputRenderable,
+  RGBA,
+  TextAttributes,
+  type KeyEvent,
+} from "@opentui/core";
 import type { DetailLine, SessionDetails } from "./message-text";
 import {
   createEffect,
@@ -80,7 +84,14 @@ function SessionPicker(props: {
   const [pins, updatePins] = context.storage.store("search-sessions.pins", {
     initial: { ids: [] as string[] },
   });
-  const dimensions = useTerminalDimensions();
+  const [dimensions, setDimensions] = createSignal({
+    width: context.renderer.width,
+    height: context.renderer.height,
+  });
+  const resize = (width: number, height: number) =>
+    setDimensions({ width, height });
+  context.renderer.on("resize", resize);
+  onCleanup(() => context.renderer.off("resize", resize));
   const leftWidth = () =>
     Math.min(
       55,
@@ -324,7 +335,7 @@ function SessionPicker(props: {
     }
   };
 
-  useKeyboard((event) => {
+  const keypress = (event: KeyEvent) => {
     if (!event.ctrl || context.renderer.currentFocusedRenderable !== input)
       return;
     if (event.name === "a") {
@@ -343,7 +354,9 @@ function SessionPicker(props: {
       event.preventDefault();
       void rename();
     }
-  });
+  };
+  context.renderer.keyInput.on("keypress", keypress);
+  onCleanup(() => context.renderer.keyInput.off("keypress", keypress));
 
   context.keymap.layer(() => ({
     mode: "global",
